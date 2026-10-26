@@ -14,6 +14,7 @@
 #include "config.h"           // Конфигурации проекта
 #include "effects/FireEffect.h" // Эффект огня
 #include "effects/TimeEffect.h" // Эффект времени
+#include "effects/ClaudeEffect.h" // Эффект аватара Claude
 #include "web/WebServer.h"    // Веб-сервер
 #include "utils/NTPClient.h"  // NTP клиент
 #include "utils/MatrixUtils.h" // Утилиты матрицы
@@ -26,6 +27,7 @@ CRGB leds[NUM_LEDS];
 // Объекты эффектов
 FireEffect fireEffect;
 TimeEffect timeEffect;
+ClaudeEffect claudeEffect;
 
 // ============ ФУНКЦИЯ SETUP() ============
 // Выполняется один раз при старте микроконтроллера
@@ -48,6 +50,7 @@ void setup() {
     Serial.println("Инициализация эффектов...");
     fireEffect.init(); // Инициализируем эффект огня
     Serial.println("Эффект огня готов");
+    claudeEffect.init(); // Инициализируем эффект аватара Claude
     
     // ===== ПОДКЛЮЧЕНИЕ К WI-FI =====
     Serial.print("Подключение к Wi-Fi ");
@@ -104,7 +107,13 @@ void loop() {
         // Режим времени
         timeEffect.update(); // Обновляем отображение времени
         // FastLED.show() вызывается внутри timeEffect.update()
-    } 
+    }
+    else if (currentEffect == "claude") {
+        // Режим аватара Claude
+        if (claudeEffect.update()) {
+            FastLED.show();
+        }
+    }
     else if (currentEffect == "off") {
         // Выключенный режим
         FastLED.clear();     // Очищаем матрицу
