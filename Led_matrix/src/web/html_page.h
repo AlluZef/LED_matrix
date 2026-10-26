@@ -228,6 +228,7 @@ const char MAIN_page[] PROGMEM = R"=====(
             <select name="effect" id="effect">
                 <option value="fire">🔥 Огонь</option>
                 <option value="time">🕒 Время</option>
+                <option value="claude">🦀 Claude</option>
                 <option value="off">⚫ Выключено</option>
             </select>
         </div>
@@ -471,6 +472,11 @@ const char MAIN_page[] PROGMEM = R"=====(
                 fireSettings.style.display = 'none';
                 timeSettings.style.display = 'block';
                 status.textContent = 'Режим времени';
+                status.className = 'status info';
+            } else if (effect === 'claude') {
+                fireSettings.style.display = 'none';
+                timeSettings.style.display = 'none';
+                status.textContent = 'Режим Claude';
                 status.className = 'status info';
             } else {
                 fireSettings.style.display = 'none';

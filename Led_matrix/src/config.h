@@ -23,7 +23,7 @@ extern unsigned int localPort;   // Порт для NTP клиента
 
 // ============ ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ЭФФЕКТОВ ============
 // Объявляем переменные как extern - их реализация будет в config.cpp
-extern String currentEffect;    // Текущий выбранный эффект ("fire", "time", "off")
+extern String currentEffect;    // Текущий выбранный эффект ("fire", "time", "claude", "off")
 extern int effectIntensity;     // Интенсивность эффекта огня (1-100)
 extern int fireHue;             // Цвет огня (0-255 в формате HSV)
 extern int timeHue;             // Цвет времени (0-255)
