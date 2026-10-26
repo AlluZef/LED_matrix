@@ -9,6 +9,8 @@
 #define MATRIX_WIDTH 16   // Ширина матрицы в пикселях
 #define MATRIX_HEIGHT 16  // Высота матрицы в пикселях
 #define NUM_LEDS (MATRIX_WIDTH * MATRIX_HEIGHT) // Общее количество светодиодов
+#define LED_VOLTS 5       // Напряжение питания матрицы (В)
+#define LED_MAX_MA 2000   // Максимальный ток блока питания (мА)
 
 // ============ КОНФИГУРАЦИЯ WI-FI ============
 extern const char* ssid;

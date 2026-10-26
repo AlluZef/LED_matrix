@@ -39,6 +39,7 @@ void setup() {
     Serial.println("Инициализация светодиодов...");
     FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
     FastLED.setBrightness(255); // Максимальная яркость контроллера
+    FastLED.setMaxPowerInVoltsAndMilliamps(LED_VOLTS, LED_MAX_MA); // Ограничение тока
     FastLED.clear();           // Очищаем матрицу
     FastLED.show();            // Применяем изменения
     Serial.println("Светодиоды инициализированы");
@@ -94,8 +95,10 @@ void loop() {
     // Выбираем и запускаем текущий эффект
     if (currentEffect == "fire") {
         // Режим огня
-        fireEffect.update(); // Обновляем эффект огня
-        FastLED.show();      // Отображаем изменения на матрице
+        // Отображаем изменения только если кадр обновился
+        if (fireEffect.update()) {
+            FastLED.show();
+        }
     } 
     else if (currentEffect == "time") {
         // Режим времени
