@@ -99,8 +99,8 @@ void TimeEffect::drawTime() {
     int minutes = minute();
     
     // Проверяем, установлено ли время
-    if (hours == 0 && minutes == 0 && year() < 2020) {
-        // Время не установлено (год меньше 2020)
+    if (timeStatus() == timeNotSet) {
+        // Время не установлено (NTP еще не ответил)
         return;
     }
     

@@ -17,7 +17,7 @@ void FireEffect::init() {
 }
 
 // Основной метод обновления (вызывается каждый цикл)
-void FireEffect::update() {
+bool FireEffect::update() {
     // Вычисляем скорость обновления в зависимости от интенсивности
     int updateSpeed = map(effectIntensity, 1, 100, 50, 20);
     
@@ -37,7 +37,9 @@ void FireEffect::update() {
         
         // Увеличиваем счетчик интерполяции
         pcnt += 30;
+        return true;
     }
+    return false;
 }
 
 // Установка интенсивности огня

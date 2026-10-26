@@ -14,7 +14,8 @@ public:
     void init();
     
     // Основной метод обновления (вызывается в loop())
-    void update();
+    // Возвращает true, если был отрисован новый кадр
+    bool update();
     
     // Установка интенсивности огня (1-100)
     void setIntensity(int intensity);
